@@ -1,0 +1,17 @@
+/* styles.css */
+/* created by Jesse Jurman, Wilson Chaney, Quinn McNamara */
+
+body {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+a.check {
+  width: 100%;
+  font-size: 2em;
+}
+
+input {
+  text-transform: uppercase;
+}
