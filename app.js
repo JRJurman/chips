@@ -8,10 +8,6 @@ app.get('/css/styles.css', function (req, res) {
 });
 
 // hosting html
-app.get('/login', function (req, res) {
-  res.sendFile(__dirname + '/html/login.html');
-});
-
 app.get('/player', function (req, res) {
   res.sendFile(__dirname + '/html/player.html');
 });
