@@ -46,14 +46,17 @@ var DEFAULT_STACK = 2000;
 var players = {}; // dictionary of player names to chip amounts
 var potAmount = 0; // total pot amount
 
+
 io.on('connection', function(socket){
 	console.log('User connected');
 
 	// Emits event with an updated amount for the pot
 	function sendUpdatePot(newAmount)
 	{
+		console.log('updating pot in app.js to $'+newAmount);
 		var potJSON = {'balance' : newAmount};
-		socket.emit('update pot', potJSON);
+		console.log('e')
+		io.emit('update pot', potJSON);
 	}
 
 	// Emits event with an updated amount for the player
@@ -78,6 +81,7 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('place bet', function(playerBet){
+		console.log('received bet from player.js');
 		var playerAmount = players[name] - playerBet['bet'];
 
 		sendUpdatePlayer(playerAmount);
