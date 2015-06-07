@@ -13,7 +13,7 @@ a.check {
   padding-left: 1%; /* fudging the pixels */
 }
 
-a.pot {
+a.pot-button {
   margin: 5%;
   width: 39%;
   font-size: 2.5em;
@@ -28,4 +28,9 @@ a.pot {
 
 input {
   text-transform: uppercase;
+}
+
+#pot {
+  font-size: 5em;
+  margin-top: 50%;
 }

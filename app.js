@@ -33,6 +33,10 @@ app.get('/js/login.js', function (req, res) {
   res.sendFile(__dirname + '/js/login.js');
 });
 
+// hosting favicon
+app.get('/favicon.png', function (req, res) {
+  res.sendFile(__dirname + '/favicon.png');
+});
 
 http.listen(3000, function () {
   console.log('Example app listening');
