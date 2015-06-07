@@ -7,10 +7,20 @@ app.get('/css/styles.css', function (req, res) {
   res.sendFile(__dirname + '/css/styles.css');
 });
 
-app.get('/player', function (req, res) {
-  res.sendFile(__dirname + '/player/index.html');
+// hosting html
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + '/html/login.html');
 });
 
+app.get('/player', function (req, res) {
+  res.sendFile(__dirname + '/html/player.html');
+});
+
+app.get('/pot', function (req, res) {
+  res.sendFile(__dirname + '/html/pot.html');
+});
+
+// hosting js
 app.get('/js/player.js', function (req, res) {
   res.sendFile(__dirname + '/js/player.js');
 });
@@ -19,9 +29,10 @@ app.get('/js/pot.js', function (req, res) {
   res.sendFile(__dirname + '/js/pot.js');
 });
 
-app.get('/pot', function (req, res) {
-  res.sendFile(__dirname + '/pot/index.html');
+app.get('/js/login.js', function (req, res) {
+  res.sendFile(__dirname + '/js/login.js');
 });
+
 
 http.listen(3000, function () {
   console.log('Example app listening');
