@@ -47,8 +47,9 @@ function allIn()
 	updateBetAmountGUI();
 }
 
-function clear()
+function clearBet()
 {
+	console.log("clearing bet.");
 	currentBet = 0;
 	updateBetAmountGUI();
 }
