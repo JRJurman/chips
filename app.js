@@ -55,7 +55,6 @@ io.on('connection', function(socket){
 	{
 		console.log('updating pot in app.js to $'+newAmount);
 		var potJSON = {'balance' : newAmount};
-		console.log('e')
 		io.emit('update pot', potJSON);
 	}
 
