@@ -4,6 +4,7 @@ var socket = io();
 
 socket.on('update pot',function(newBalance)
 {
-	potBalance = newBalance["balance"];
-	//Update GUI to reflect new balance.
+	console.log('updating pot to $'+newBalance);
+	potBalance = newBalance['balance'];
+	document.getElementById('pot').innerHTML = 'Pot: $'+potBalance;
 });
