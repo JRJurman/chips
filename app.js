@@ -28,7 +28,7 @@ http.listen(3000, function () {
 });
 
 var DEFAULT_STACK = 2000;
-var players = new Array(); // dictionary of player names to chip amounts
+var players = {}; // dictionary of player names to chip amounts
 var potAmount = 0; // total pot amount
 
 io.on('connection', function(socket){
@@ -44,6 +44,7 @@ io.on('connection', function(socket){
 	// Emits event with an updated amount for the player
 	function sendUpdatePlayer(newAmount)
 	{
+		players[name] = newAmount;
 		var playerJSON = {'name' : name, 'stack' : newAmount};
 		socket.emit('update player', playerJSON);
 	}
@@ -53,14 +54,17 @@ io.on('connection', function(socket){
 
 	socket.on('player login', function(playerInfo){
 		name = playerInfo['name'];
-		if (players.indexOf(name) > -1) {
-			players[name] = DEFAULT_STACK;
+		if (name in players) {
+			sendUpdatePlayer(players[name]);
 		}
-		sendUpdatePlayer(players[name]);
+		else {
+			sendUpdatePlayer(DEFAULT_STACK);
+		}
 	});
 
 	socket.on('place bet', function(playerBet){
 		var playerAmount = players[name] - playerBet['bet'];
+
 		sendUpdatePlayer(playerAmount);
 		potAmount += playerBet['bet'];
 		sendUpdatePot(potAmount);
