@@ -56,6 +56,7 @@ io.on('connection', function(socket){
 		if (players.indexOf(name) > -1) {
 			players[name] = DEFAULT_STACK;
 		}
+		updatePlayer(players[name]);
 	});
 
 	socket.on('place bet', function(playerBet){
