@@ -47,6 +47,12 @@ function allIn()
 	updateBetAmountGUI();
 }
 
+function clear()
+{
+	currentBet = 0;
+	updateBetAmountGUI();
+}
+
 function addToBet(amount)
 {
 	console.log("Adding $"+amount+" to bet");
