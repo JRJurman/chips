@@ -32,22 +32,26 @@
     <div id="main"></div>
     <script src="../js/player.js"></script>
 
-    <a id="stack" class="btn btn-default check">Stack: $0</a>
+    <a id="stack" class="btn btn-default check-100">Stack: $0</a>
 
     <div id="first-row">
       <a href="#" class="btn btn-info pot-button" onClick="addToBet(5)">$5</a>
       <a href="#" class="btn btn-success pot-button" onClick="addToBet(25)">$25</a>
     </div>
+
     <div id="second-row">
       <a href="#" class="btn btn-warning pot-button" onClick="addToBet(50)">$50</a>
       <a href="#" class="btn btn-danger pot-button" onClick="addToBet(100)">$100</a>
     </div>
 
+    <div id="third-row">
+      <a href="#" class="btn btn-primary pot-button" onClick="allIn()">All In</a>
+      <a href="#" class="btn btn-default pot-button" onClick="clear()">Clear</a>
+    </div>
+
     <div id="bottom-buttons">
-      <a href="#" id="bet-all" class="btn btn-primary check-50" onClick="allIn()">All In</a>
-      <a href="#" id="bet-all" class="btn btn-primary check-50" onClick="clear()">Clear</a>
-      <a href="#" id="bet-amount" class="btn btn-default check" onClick="placeBet()">Bet $0</a>
-      <a href="#" id="claim-amount" class="btn btn-warning check" onClick="claimWin()">Claim Win</a>
+      <a href="#" id="bet-amount" class="btn btn-success check-100" onClick="placeBet()">Bet $0</a>
+      <a href="#" id="claim-amount" class="btn btn-warning check-100" onClick="claimWin()">Claim Win</a>
     </div>
 
   </body>

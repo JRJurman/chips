@@ -7,14 +7,17 @@ body {
   padding: 20px;
 }
 
-a.check {
+a.check-100 {
   width: 100%;
   font-size: 2.5em;
   padding-left: 1%; /* fudging the pixels */
 }
 
 a.pot-button {
-  margin: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   width: 39%;
   font-size: 2.5em;
   padding-top: 1em;
