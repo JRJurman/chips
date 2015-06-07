@@ -69,6 +69,10 @@ io.on('connection', function(socket){
 
 	var name = ''; // player's name for this connection instance
 
+	socket.on('load pot', function(){
+		sendUpdatePot(potAmount);
+	});
+
 	socket.on('player login', function(playerInfo){
 		name = playerInfo['name'];
 		if (name in players) {
