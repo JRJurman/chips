@@ -1,8 +1,38 @@
+<!DOCTYPE html>
+<!-- index.html -->
+<!-- created by Jesse Jurman, Wilson Chaney, Quinn McNamara -->
 <html>
-<head>
-	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-</head>
-<body>
-	<script src="../js/pot.js"></script>
-</body>
+  <head>
+
+    <title>Is it a word?</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/darkly/bootstrap.min.css">
+
+    <!-- Socket.io -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+  </head>
+
+  <body>
+
+    <div id="main"></div>
+    <script src="../js/player.js"></script>
+
+    <a id="pot" class="btn btn-default check">Pot: $0</a>
+
+  </body>
 </html>
