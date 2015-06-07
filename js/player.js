@@ -7,8 +7,6 @@ var currentBet = 0;
 
 var socket = io();
 
-playerNameEntered();
-
 socket.on('update player',function(newPlayerState) {
 
 	console.log("Received update player through socket.");
@@ -21,9 +19,8 @@ socket.on('update player',function(newPlayerState) {
 	updatePlayerGUI();
 });
 
-function playerNameEntered()
+function playerNameEntered(name)
 {
-	var name = 'Wilson'; // TODO: Get name from DOM.
 	player['name'] = name;
 	socket.emit('player login',{'name':name});
 }
@@ -64,7 +61,7 @@ function addToBet(amount)
 
 function updatePlayerGUI()
 {
-	document.getElementById('stack').innerHTML = '$'+player['stack'];
+	document.getElementById('stack').innerHTML = player['name']+': $'+player['stack'];
 }
 
 function updateBetAmountGUI()
