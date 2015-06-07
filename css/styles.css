@@ -11,6 +11,7 @@ a.check-100 {
   width: 100%;
   font-size: 2.5em;
   padding-left: 1%; /* fudging the pixels */
+  margin-top: 5%;
 }
 
 a.pot-button {
