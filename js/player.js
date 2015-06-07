@@ -44,6 +44,7 @@ function claimWin()
 function allIn()
 {
 	currentBet = player['stack'];
+	updateBetAmountGUI();
 }
 
 function addToBet(amount)
