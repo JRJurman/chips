@@ -48,14 +48,14 @@ io.on('connection', function(socket){
 	// Emits event with an updated amount for the pot
 	function sendUpdatePot(newAmount)
 	{
-		potJSON = {'balance' : potAmount};
+		var potJSON = {'balance' : newAmount};
 		socket.emit('update pot', potJSON);
 	}
 
 	// Emits event with an updated amount for the player
 	function sendUpdatePlayer(newAmount)
 	{
-		playerJSON = { 'name' : name, 'stack' : playerAmount };
+		var playerJSON = {'name' : name, 'stack' : newAmount};
 		socket.emit('update player', playerJSON);
 	}
 
@@ -67,20 +67,20 @@ io.on('connection', function(socket){
 		if (players.indexOf(name) > -1) {
 			players[name] = DEFAULT_STACK;
 		}
-		updatePlayer(players[name]);
+		sendUpdatePlayer(players[name]);
 	});
 
 	socket.on('place bet', function(playerBet){
-		playerAmount = players[name] - playerBet['bet'];
-		updatePlayer(playerAmount);
+		var playerAmount = players[name] - playerBet['bet'];
+		sendUpdatePlayer(playerAmount);
 		potAmount += playerBet['bet'];
-		updatePot(potAmount);
+		sendUpdatePot(potAmount);
 	});
 
 	socket.on('claim win', function(){
-		playerAmount = players[name] + potAmount;
-		updatePlayer(playerAmount);
+		var playerAmount = players[name] + potAmount;
+		sendUpdatePlayer(playerAmount);
 		potAmount = 0;
-		updatePot(potAmount);
+		sendUpdatePot(potAmount);
 	});
 });
