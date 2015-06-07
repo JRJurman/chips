@@ -3,26 +3,63 @@ var player = {
 	'stack':0
 };
 
+var currentBet = 0;
+
 var socket = io();
 
+playerNameEntered();
+
 socket.on('update player',function(newPlayerState) {
+
+	console.log("Received update player through socket.");
+	//Are we receiving the socket message for the correct player???
+	if(player['name'] != newPlayerState['name'])
+		console.log("Names did not match! Should be "+player['name']+" but received "+newPlayerState['name']);
+
 	player = newPlayerState;
+	console.log("NEW PLAYER STACK: "+player['stack']);
+	updatePlayerGUI();
 });
 
-// Onclick 
 function playerNameEntered()
 {
 	var name = 'Wilson'; // TODO: Get name from DOM.
+	player['name'] = name;
 	socket.emit('player login',{'name':name});
 }
 
 function placeBet()
 {
-	var betAmount = 0; // TODO: Get bet amount from DOM.
-	socket.emit('place bet',{'bet':betAmount});
+	player['stack'] -= currentBet;
+	socket.emit('place bet',{'bet':currentBet});
+	currentBet = 0;
+	updateBetAmountGUI();
 }
 
 function claimWin()
 {
 	socket.emit('claim win',{});
+}
+
+function allIn()
+{
+	currentBet = player['stack'];
+}
+
+function addToBet(amount)
+{
+	console.log("Adding $"+amount+" to bet");
+	if(currentBet + amount <= player['stack'])
+		currentBet += amount;
+	updateBetAmountGUI();
+}
+
+function updatePlayerGUI()
+{
+	document.getElementById('stack').innerHTML = '$'+player['stack'];
+}
+
+function updateBetAmountGUI()
+{
+	document.getElementById('bet-amount').innerHTML = "Bet $"+currentBet;
 }
