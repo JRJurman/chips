@@ -13,6 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/darkly/bootstrap.min.css">
 
+    <!-- Socket.io -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -29,13 +32,19 @@
     <div id="main"></div>
     <script src="../js/player.js"></script>
 
-    <a href="#" id="check" class="btn btn-default check" onClick="checkWord()">Stack: 100</a>
+    <a id="stack" class="btn btn-link check">Stack: $100</a>
 
-
-    <div class="form-group">
-      <label class="control-label" for="focusedInput">Type In Word Here:</label>
-      <input class="form-control" onkeyup='checkKey(event)' placeholder='Word Check' id="focusedInput" type="text" style='font-size:2em; height:2em' value="">
+    <div id="first-row">
+      <a href="#" class="btn btn-info pot" onClick="addToBet(5)">$5</a>
+      <a href="#" class="btn btn-success pot" onClick="addToBet(25)">$25</a>
     </div>
+    <div id="second-row">
+      <a href="#" class="btn btn-warning pot" onClick="addToBet(50)">$50</a>
+      <a href="#" class="btn btn-danger pot" onClick="addToBet(100)">$100</a>
+    </div>
+
+    <a href="#" id="stack" class="btn btn-link check" onClick="">All In</a>
+    <a href="#" id="stack" class="btn btn-link check" onClick="">Bet $100</a>
 
 
   </body>
