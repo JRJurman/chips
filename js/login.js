@@ -6,12 +6,13 @@ names = [
   "YASH",
   "GILBERT",
   "AUSTIN",
-  "NICK"
-  
+  "NICK",
+  "JUSTIN",
+  "ALEX"
 ]
 
 $(document).ready(function(){
-	
+
 	//Hide betting platform
 	document.getElementById('player-page').style.display = 'none';
 
