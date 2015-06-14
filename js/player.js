@@ -7,6 +7,8 @@ var currentBet = 0;
 
 var socket = io();
 
+
+
 socket.on('update player',function(newPlayerState) {
 
 	console.log("Received update player through socket.");
@@ -19,6 +21,10 @@ socket.on('update player',function(newPlayerState) {
 	updatePlayerGUI();
 });
 
+socket.on('bet failure',function() {
+	alert("Bet failed! Try refreshing the page.");
+});
+
 function playerNameEntered(name)
 {
 	player['name'] = name;
@@ -28,7 +34,7 @@ function playerNameEntered(name)
 function placeBet()
 {
 	player['stack'] -= currentBet;
-	socket.emit('place bet',{'bet':currentBet});
+	socket.emit('place bet',{'name':player.name,'bet':currentBet});
 	currentBet = 0;
 	updateBetAmountGUI();
 }

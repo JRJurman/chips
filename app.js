@@ -44,7 +44,7 @@ var potAmount = 0; // total pot amount
 
 
 io.on('connection', function(socket){
-	console.log('User connected');
+	//console.log('User connected');
 
 	// Emits event with an updated amount for the pot
 	function sendUpdatePot(newAmount)
@@ -70,6 +70,7 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('player login', function(playerInfo){
+		console.log(playerInfo["name"]+" logged in");
 		name = playerInfo['name'];
 		if (name in players) {
 			sendUpdatePlayer(players[name]);
@@ -80,15 +81,19 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('place bet', function(playerBet){
-		console.log('received bet from player.js');
+		
 		var playerAmount = players[name] - playerBet['bet'];
 		if(!(name in players)) {
-			console.log("Player "+name+" not found in application memory!");
+			console.log("Player "+playerBet.name+" not found in application memory!");
+			socket.emit('bet failure');
+
 		}
 		else {
 			sendUpdatePlayer(playerAmount);
 			potAmount += playerBet['bet'];
+			console.log(name+" bets "+"$"+playerBet.bet);
 			sendUpdatePot(potAmount);
+
 		}
 
 		
