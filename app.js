@@ -82,10 +82,16 @@ io.on('connection', function(socket){
 	socket.on('place bet', function(playerBet){
 		console.log('received bet from player.js');
 		var playerAmount = players[name] - playerBet['bet'];
+		if(!(name in players)) {
+			console.log("Player "+name+" not found in application memory!");
+		}
+		else {
+			sendUpdatePlayer(playerAmount);
+			potAmount += playerBet['bet'];
+			sendUpdatePot(potAmount);
+		}
 
-		sendUpdatePlayer(playerAmount);
-		potAmount += playerBet['bet'];
-		sendUpdatePot(potAmount);
+		
 	});
 
 	socket.on('claim win', function(){

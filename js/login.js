@@ -1,7 +1,13 @@
 names = [
   "JESSE",
   "WILSON",
-  "QUINN"
+  "QUINN",
+  "JON",
+  "YASH",
+  "GILBERT",
+  "AUSTIN",
+  "NICK"
+  
 ]
 
 $(document).ready(function(){
